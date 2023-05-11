@@ -3,6 +3,7 @@ import * as dotenv from 'dotenv';
 import cors from 'cors';
 import scribble from './routes/scribble.routes.js';
 import txtToImg from './routes/txttoimg.routes.js';
+import paypal from './routes/paypal.routes.js';
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ app.use(express.json({ limit: "50mb" }))
 
 app.use("/api/v1/txt-to-img", txtToImg);
 app.use("/api/v1/scribble", scribble);
+app.use("/api/v1", paypal);
 
 app.get('/', (req, res) => {
   res.status(200).json({ message: "Hello from BB" })
