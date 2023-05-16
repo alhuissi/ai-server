@@ -22,6 +22,9 @@ export async function createOrder() {
           },
         },
       ],
+      application_context: {
+        shipping_preference: "NO_SHIPPING",
+      },
     }),
   });
 
