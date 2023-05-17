@@ -30,4 +30,13 @@ router.route("/capture-paypal-order").post(async (req, res) => {
   }
 });
 
+router.route("/token").post(async (req, res) => {
+  try {
+    const token = await paypal.generateAccessToken();
+    res.json(token);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+});
+
 export default router;

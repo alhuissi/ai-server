@@ -19,13 +19,13 @@ router.route("/").get((req, res) => {
 
 router.route("/").post(async (req, res) => {
   try {
-    const { prompt, saveableFile } = req.body;
+    const { prompt, urlFile } = req.body;
     const response = await replicate.run(
       "jagilley/controlnet:8ebda4c70b3ea2a2bf86e44595afb562a2cdf85525c620f1671a78113c9f325b",
       {
         input: {
           prompt: prompt,
-          image: saveableFile,
+          image: urlFile,
           seed: 1,
           eta: 0
         }
