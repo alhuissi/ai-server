@@ -19,12 +19,15 @@ router.route("/").get((req, res) => {
 
 router.route("/").post(async (req, res) => {
   try {
-    const { prompt, urlFile } = req.body;
+    //const { prompt, urlFile } = req.body;
+    const { urlFile } = req.body;
+    const prompt = "a sketch, hand drawn, black and white, white background";
     const response = await replicate.run(
-      "jagilley/controlnet:8ebda4c70b3ea2a2bf86e44595afb562a2cdf85525c620f1671a78113c9f325b",
+      "alaradirik/t2i-adapter-sdxl-sketch:3a14a915b013decb6ab672115c8bced7c088df86c2ddd0a89433717b9ec7d927",
       {
         input: {
           prompt: prompt,
+          negative_prompt: "extra digit, fewer digits, cropped, worst quality, low quality, glitch, deformed, mutated, ugly, disfigured",
           image: urlFile,
           seed: 1,
           eta: 0
