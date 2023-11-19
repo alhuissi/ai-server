@@ -71,16 +71,19 @@ exports.scribble = functions.https.onCall(async (data, context) => {
 
 exports.imgto = functions.https.onCall(async (data, context) => {
   try {
-    const { prompt, urlFile } = data;
+    //const { prompt, urlFile } = data;
+    const { urlFile } = data;
+    const prompt = "a sketch, hand drawn, black and white, white background";
     const response = await replicate.run(
-      "jagilley/controlnet:8ebda4c70b3ea2a2bf86e44595afb562a2cdf85525c620f1671a78113c9f325b",
+      "alaradirik/t2i-adapter-sdxl-sketch:3a14a915b013decb6ab672115c8bced7c088df86c2ddd0a89433717b9ec7d927",
       {
         input: {
-          image: urlFile,
           prompt: prompt,
+          negative_prompt: "extra digit, fewer digits, cropped, worst quality, low quality, glitch, deformed, mutated, ugly, disfigured",
+          image: urlFile,
           seed: 1,
           eta: 0
-        },
+        }
       }
     );
 
