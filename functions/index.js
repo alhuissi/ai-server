@@ -1,7 +1,6 @@
 const functions = require("firebase-functions");
 const Replicate = require("replicate");
-const fetch = require('cross-fetch');
-const cors = require("cors")({origin: true});
+const fetch = require('cross-fetch')
 const replicate = new Replicate({
   auth: process.env.REPLICATE_API_TOKEN,
   fetch: fetch
